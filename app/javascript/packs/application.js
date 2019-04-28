@@ -2,7 +2,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-import App from '../react/components/App'
+import NewsFeed from '../react/components/NewsFeed'
 import RedBox from 'redbox-react'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,13 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (reactElement) {
     if(window.railsEnv && window.railsEnv === 'development'){
       try {
-        render(<App />, reactElement)
+        render(<NewsFeed />, reactElement)
       } catch (e) {
         render(<RedBox error={e} />, reactElement)
       }
     }
     else {
-      render(<App />, reactElement)
+      render(<NewsFeed />, reactElement)
     }
   }
 })
