@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_20_023712) do
+ActiveRecord::Schema.define(version: 2019_04_28_183102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "private_events", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "location_name", null: false
+    t.string "location_address", null: false
+    t.string "location_city", null: false
+    t.string "location_state", null: false
+    t.string "location_zip", null: false
+    t.date "date", null: false
+    t.time "start_time", null: false
+    t.time "end_time", null: false
+    t.text "description", null: false
+    t.string "event_photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_private_events_on_user_id"
+  end
+
+  create_table "public_events", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "location_name", null: false
+    t.string "location_address", null: false
+    t.string "location_city", null: false
+    t.string "location_state", null: false
+    t.string "location_zip", null: false
+    t.date "date", null: false
+    t.time "start_time", null: false
+    t.time "end_time", null: false
+    t.text "description", null: false
+    t.string "event_photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_public_events_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
