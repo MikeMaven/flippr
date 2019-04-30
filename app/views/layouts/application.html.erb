@@ -5,13 +5,13 @@
   <title>Flippr - A Social Calendar for Pinheads</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
+  <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Bungee+Shade" rel="stylesheet">
 
     <%= javascript_include_tag "vendor/modernizr" %>
 
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <nav class="top-bar">
     <ul class="title-area">
       <li class="name" id="logo-home-button">
@@ -19,8 +19,12 @@
       </li>
     </ul>
 
+    <section class="top-bar-section top-bar-logo">
+      Flippr.
+    </section>
+
     <section class="top-bar-section">
-      <ul class="right">
+      <ul>
         <%- if current_user -%>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
