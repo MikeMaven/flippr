@@ -1,0 +1,49 @@
+<%= form_for @public_event do |f| %>
+  <div class="row">
+    <%= f.label :event_photo %>
+    <%= f.file_field :event_photo %>
+  </div>
+  <div class="row">
+    <%= f.label :title, "Location Name:" %><br />
+    <%= f.text_field :location_name %>
+  </div>
+  <div class="row">
+    <%= f.label :title, "Location Address:" %><br />
+    <%= f.text_field :location_address %>
+  </div>
+  <div class="row">
+    <div class="column large-6">
+      <%= f.label :title, "Location City:" %><br />
+      <%= f.text_field :location_city %>
+    </div>
+    <div class="column large-3">
+    <%= f.label :title, "State:" %><br />
+    <%= f.text_field :location_state %>
+    </div>
+    <div class="column large-3">
+      <%= f.label :location_zip, "Zip Code:" %><br />
+      <%= f.number_field :location_zip %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column large-6">
+      <%= f.label :date, "Date of Event:" %><br />
+      <%= f.date_select :date %>
+    </div>
+    <div class="column large-3">
+      <%= f.label :date, "Start Time:" %><br />
+      <%= f.time_select :start_time %>
+    </div>
+    <div class="column large-3">
+      <%= f.label :date, "End Time:" %><br />
+      <%= f.time_select :end_time %>
+    </div>
+  </div>
+  <div class="row">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="row">
+      <%= f.submit "Submit Event" %>
+    </div>
+  <% end %>
