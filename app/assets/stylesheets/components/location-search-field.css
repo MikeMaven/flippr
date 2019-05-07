@@ -1,0 +1,10 @@
+.location-search-results-active {
+  margin-top: -15px;
+  max-height: 100px;
+  overflow: scroll;
+  border: 1px solid #DBDBDB;
+}
+
+.location-search-results-hidden {
+  visibility: collapse;
+}
