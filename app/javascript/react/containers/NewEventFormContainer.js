@@ -39,7 +39,7 @@ class NewEventFormContainer extends React.Component {
       searchFieldStatus = "-visible"
     }
     return(
-      <div className="react-new-event-form">
+      <form className="react-new-event-form" onSubmit={this.handleSubmit}>
         <input type="radio" id="public" name="location-type" value="public" />
         <label htmlFor="public">Public Location</label>
         <input type="radio" id="private" name="location-type" value="private"/>
@@ -53,18 +53,34 @@ class NewEventFormContainer extends React.Component {
 
           { !this.state.searchIsHidden && <LocationSearchField
             sendUpLocationInfo={this.sendUpLocationInfo}
-          />}
+          /> }
 
         { !this.state.infoIsHidden &&
-          (<div className="selected-location">
-          <p>
-            {this.state.selectedLocation.name}<br/>
-            {this.state.selectedLocation.street}<br/>
-            {this.state.selectedLocation.city}, {this.state.selectedLocation.state} {this.state.selectedLocation.zip}<br/>
-            Number of games: {this.state.selectedLocation.num_machines}
-          </p>
-        </div>) }
-      </div>
+          (
+          <div>
+          <div className="public-event-form-info-photo">
+            <div className="selected-location-info">
+              <p>
+                {this.state.selectedLocation.name}<br/>
+                {this.state.selectedLocation.street}<br/>
+                {this.state.selectedLocation.city}, {this.state.selectedLocation.state} {this.state.selectedLocation.zip}<br/>
+                Number of games: {this.state.selectedLocation.num_machines}
+              </p>
+            </div>
+            <div className="public-event-file-uploader">
+            <p>Code for file uploader will go here</p>
+            </div>
+          </div>
+          <div className="date-and-time-pickers">
+            Date and time picker code will go here.
+          </div>
+          <div className="public-event-description-field">
+            <textarea />
+          </div>
+          <input className="button" type="submit" value="Let's Flip!" />
+          </div>
+        )}
+      </form>
     )
   }
 }

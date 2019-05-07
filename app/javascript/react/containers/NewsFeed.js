@@ -6,7 +6,17 @@ class NewsFeedContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: []
+      events: [],
+      toggleForm: true
+    }
+    this.toggleForm = this.toggleForm.bind(this)
+  }
+
+  toggleForm(){
+    if (this.state.toggleForm) {
+      this.setState({ toggleForm: false })
+    } else {
+      this.setState({ toggleForm: true })
     }
   }
 
@@ -40,7 +50,8 @@ componentDidMount(){
     })
     return(
       <div className="root-container">
-        <NewEventFormContainer/>
+        <input className="add-event-button font-family-sans-serif" type="button" value="Add A Flip Sesh" onClick={this.toggleForm}/>
+        {!this.state.toggleForm && <NewEventFormContainer/>}
         {events}
       </div>
     )
