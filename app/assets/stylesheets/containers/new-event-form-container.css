@@ -1,0 +1,10 @@
+.react-new-event-form {
+  max-width: 45%;
+}
+
+.selected-location-info-collapsed {
+  visibility: collapse;
+}
+.location-search-collapsed {
+  visibility: collapse;
+}
