@@ -1,0 +1,12 @@
+.new-user-session {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #E9EBEE;
+  height: 100vh;
+}
+
+.new-user-session-header {
+  font-family: 'Bungee Shade', cursive;
+}
