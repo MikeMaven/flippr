@@ -1,15 +1,23 @@
 .event-tile {
   margin: 10px;
+  width: 100%;
+  box-shadow: 4px 4px gray;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-tile-content {
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
   padding: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
   width: 60%;
-  border: 1px solid gray;
-  border-radius: 10px;
-  box-shadow: 4px 4px gray;
-  background-color: white;
 }
 
 .event-tile-info {
