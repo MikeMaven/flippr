@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave'
 gem 'mini_magick'
+gem "active_model_serializers"
 
 
 group :development, :test do
