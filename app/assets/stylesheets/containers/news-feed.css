@@ -11,7 +11,9 @@
   margin: 20px;
   border: 1px solid black;
   background-color: #2071CC;
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   color: white;
   font-size: 110%;
+  border-radius: 20px;
+  box-shadow: 4px 4px gray;
 }

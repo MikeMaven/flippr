@@ -43,14 +43,16 @@ componentDidMount(){
       return(
         <PublicEventTile
           key={event.id}
-          event_photo={event.event_photo.url}
+          event_photo={event.event_photo.thumb.url}
+          title={event.title}
+          description={event.description}
           location_name={event.location_name}
         />
       )
     })
     return(
       <div className="root-container">
-        <input className="add-event-button font-family-sans-serif" type="button" value="Add A Flip Sesh" onClick={this.toggleForm}/>
+        <input className="add-event-button" type="button" value="Add A Flip Sesh" onClick={this.toggleForm}/>
         {!this.state.toggleForm && <NewEventFormContainer/>}
         {events}
       </div>
