@@ -33,7 +33,7 @@ gem 'mini_magick'
 
 
 group :development, :test do
-
+  gem 'faker'
 end
 
 group :development do
