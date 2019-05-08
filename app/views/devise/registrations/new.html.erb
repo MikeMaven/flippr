@@ -1,4 +1,6 @@
-<h2>Start Flippin'</h2>
+<div class="new-user-registration">
+
+<h2 class="new-user-registration-header">Start Flippin'</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -36,9 +38,14 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :profile_photo, "Add A Profile Photo:" %><br />
+    <%= f.file_field :profile_photo %>
+  </div>
+
   <div class="actions">
-    <%= f.submit "Sign Up" %>
+    <%= f.submit "Sign Up", :class => "button" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+</div>

@@ -2,3 +2,19 @@
   background-color: #E9EBEE;
   height: 100vh;
 }
+
+.flash {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.flash-errors {
+  background-color: red;
+}
+
+.flash-notice {
+  background-color: #82CE6C;
+}
+
+.flash-alert {
+  background-color: yellow;
+}
