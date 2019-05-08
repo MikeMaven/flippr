@@ -3,6 +3,7 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import TextField from '../components/TextField';
 import LocationSearchField from '../components/LocationSearchField';
+import DateTimeField from '../components/DateTimeField';
 
 class NewEventFormContainer extends React.Component {
   constructor(props) {
@@ -15,6 +16,8 @@ class NewEventFormContainer extends React.Component {
       selectedLocation: {},
       infoIsHidden: true,
       searchIsHidden: false,
+      starttime: '',
+      endtime: '',
     }
     this.handleChange = this.handleChange.bind(this)
     this.sendUpLocationInfo = this.sendUpLocationInfo.bind(this)
@@ -51,8 +54,8 @@ class NewEventFormContainer extends React.Component {
     body.append("location_city", this.state.selectedLocation.city)
     body.append("location_state", this.state.selectedLocation.state)
     body.append("location_zip", this.state.selectedLocation.zip)
-    body.append("start_time", "a great time")
-    body.append("end_time", "an even better time")
+    body.append("start_time", this.state.startTime)
+    body.append("end_time", this.state.endTime)
     body.append("event_photo", this.state.file[0])
 
     fetch("/api/v1/public_events.json",{
@@ -85,6 +88,7 @@ class NewEventFormContainer extends React.Component {
   }
 
   render(){
+    console.log(this.state)
     return(
       <form className="react-new-event-form" onSubmit={this.handleSubmit}>
         <input type="radio" id="public" name="location-type" value="public" />
@@ -115,6 +119,7 @@ class NewEventFormContainer extends React.Component {
               </p>
             </div>
             <div className="public-event-file-uploader">
+              <p>Add and Event Photo:</p>
               <Dropzone onDrop={this.onDrop}>
                 <div className="photo-icon">
                   <i className="fas fa-camera-retro"></i>
@@ -123,10 +128,22 @@ class NewEventFormContainer extends React.Component {
             </div>
           </div>
           <div className="date-and-time-pickers">
-            Datepicker goes here.
+            <DateTimeField
+              label="Event Start Time:"
+              name="starttime"
+              content={this.state.starttime}
+              handleChangeMethod={this.handleChange}
+            />
+            <DateTimeField
+              label="Event End Time:"
+              name="endtime"
+              content={this.state.endtime}
+              handleChangeMethod={this.handleChange}
+            />
           </div>
           <div className="public-event-description-field">
-            <textarea onChange={this.handleChange} name="description" value={this.state.description} label="Event Description:"/>
+            <label htmlFor="description">Event Description:</label>
+            <textarea onChange={this.handleChange} name="description" value={this.state.description} rows="5"/>
           </div>
           <input onClick={this.handlePublicSubmit} className="button" type="submit" value="Let's Flip!" />
           </div>

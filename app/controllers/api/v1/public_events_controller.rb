@@ -1,7 +1,7 @@
 class Api::V1::PublicEventsController < ApiController
   def index
     events = PublicEvent.all
-    render json: { events: events }
+    render json: { events: serialized_public_events }
   end
 
   def create
@@ -12,5 +12,9 @@ class Api::V1::PublicEventsController < ApiController
     else
       flash[:errors] = @public_event.errors.full_messages.join(", ")
     end
+  end
+
+  def serialized_public_events
+    ActiveModel::Serializer::ArraySerializer.new(PublicEvent.all, each_serializer: PublicEventSerializer)
   end
 end

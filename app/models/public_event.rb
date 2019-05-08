@@ -11,3 +11,7 @@ class PublicEvent < ApplicationRecord
   validates :end_time, presence: true
   validates :description, presence: true
 end
+
+def created_by
+  User.find(user_id)
+end
