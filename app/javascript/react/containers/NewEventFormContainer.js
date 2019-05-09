@@ -91,13 +91,9 @@ class NewEventFormContainer extends React.Component {
     console.log(this.state)
     return(
       <form className="react-new-event-form" onSubmit={this.handleSubmit}>
-        <input type="radio" id="public" name="location-type" value="public" />
-        <label htmlFor="public">Public Location</label>
-        <input type="radio" id="private" name="location-type" value="private"/>
-        <label htmlFor="private">Private Location</label>
         <TextField
           name="title"
-          label="Event Name:"
+          label="Event Name: (60 characters max)"
           value={this.state.title}
           handleChangeMethod={this.handleChange}
         />

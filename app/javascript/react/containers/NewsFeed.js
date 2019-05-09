@@ -1,6 +1,8 @@
 import React from 'react';
-import PublicEventTile from '../components/PublicEventTile'
-import NewEventFormContainer from './NewEventFormContainer'
+
+import InfiniteScroll from 'react-infinite-scroll-component';
+import PublicEventTile from '../components/PublicEventTile';
+import NewEventFormContainer from './NewEventFormContainer';
 
 class NewsFeedContainer extends React.Component {
   constructor(props) {
@@ -42,11 +44,12 @@ componentDidMount(){
     let events = this.state.events.map((event) => {
       return(
         <PublicEventTile
+          id={event.id}
           key={event.id}
-          event_photo={event.event_photo.thumb.url}
+          event_photo={event.event_photo.url}
           title={event.title}
-          description={event.description}
-          location_name={event.location_name}
+          locationName={event.location_name}
+          user={event.created_by}
         />
       )
     })

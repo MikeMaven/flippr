@@ -1,7 +1,7 @@
 class PublicEvent < ApplicationRecord
   mount_uploader :event_photo, PublicEventPhotoUploader
   validates :user_id, presence: true
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 60 }
   validates :location_name, presence: true
   validates :location_address, presence: true
   validates :location_city, presence: true

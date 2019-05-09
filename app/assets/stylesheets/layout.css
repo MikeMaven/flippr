@@ -2,6 +2,9 @@
   background-color: #E9EBEE;
   height: 100vh;
 }
+.root-container {
+  background-color: #E9EBEE;
+}
 
 .flash {
   font-family: 'Orbitron', sans-serif;
