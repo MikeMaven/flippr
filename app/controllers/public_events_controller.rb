@@ -1,5 +1,7 @@
 class PublicEventsController < ApplicationController
   before_action :configure_permitted_parameters, if: :devise_controller?
+  def show
+  end
 
   def new
     @public_event = PublicEvent.new

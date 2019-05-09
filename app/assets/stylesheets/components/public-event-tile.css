@@ -1,27 +1,70 @@
 .event-tile {
   margin: 10px;
   width: 100%;
-  box-shadow: 4px 4px gray;
-  background-color: white;
+  background-color: #F4F2F0;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .event-tile-content {
+  background-color: white;
   border-left: 1px solid gray;
   border-right: 1px solid gray;
   padding: 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   width: 60%;
 }
 
+.event-tile-user-info {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  align-items:
+
+}
+
 .event-tile-info {
-  margin: 5px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
+  background-color: #E9EBEE;
+}
+
+.event-tile-event {
+  border: 1px solid gray;
+  width: 75%;
+  height: auto;
+  box-shadow: 8px 8px #F4F2F0;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-tile-photo {
+  height: 300px;
+  overflow: hidden;
+}
+
+.event-tile-photo img {
+  width: 100%;
+}
+
+.event-tile-user-name {
+  font-family: 'Staatliches', cursive;
+}
+
+.event-tile-user-info img {
+  border-radius: 25px;
+}
+
+.event-tile-title {
+  background-color: white;
+  padding 3px;
+  text-align: center;
+  font-family: 'Staatliches', cursive;
 }

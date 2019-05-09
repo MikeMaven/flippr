@@ -1,3 +1,21 @@
 .react-new-event-form {
-  background-color: #E9EBEE;
+  width: 50%;
+  max-width: 50%;
+}
+
+.public-event-form-info-photo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.fa-camera-retro {
+  font-size: 7em;
+  color: #ADB5BD;
+}
+
+.photo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
