@@ -10,4 +10,6 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
     end
   end
+
+  get "/location", to: "user_locations#index"
 end
