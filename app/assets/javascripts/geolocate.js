@@ -18,9 +18,5 @@ navigator.geolocation.getCurrentPosition(function(position) {
         throw(error);
       }
       })
-      .then(response => response.json())
-      .then(body => {
-
-      })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
 });
