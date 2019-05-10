@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { render } from 'react-dom'
 
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     else {
-      render(<NewsFeed />, reactElement)
+      render(<AppRouter />, reactElement)
     }
   }
 })

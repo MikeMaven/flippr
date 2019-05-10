@@ -15,7 +15,7 @@ class PublicEvent < ApplicationRecord
   after_validation :geocode
 
   def the_address
-    "#{location_address}, #{location_city} #{location_state}"
+    "#{location_address} #{location_city} #{location_state}"
   end
 
   def created_by

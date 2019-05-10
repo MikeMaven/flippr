@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
 
   resources :public_events, only: [:new, :show, :create]
+  resources :users, only: [:show]
 
   namespace :api do
     namespace :v1 do
