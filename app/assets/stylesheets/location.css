@@ -1,0 +1,24 @@
+.location-landing-page {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #E9EBEE;
+}
+
+.location-landing-header {
+  font-family: 'Bungee Shade', cursive;
+  font-size: 500%
+}
+
+.location-landing-sub-header {
+  white-space: nowrap;
+  font-family: 'Staatliches', cursive;
+}
+
+.location-landing-page p {
+  width: 40%;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+}

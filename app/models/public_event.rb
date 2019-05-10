@@ -10,8 +10,15 @@ class PublicEvent < ApplicationRecord
   validates :start_time, presence: true
   validates :end_time, presence: true
   validates :description, presence: true
-end
 
-def created_by
-  User.find(user_id)
+  geocoded_by :the_address
+  after_validation :geocode
+
+  def the_address
+    "#{location_address}, #{location_city} #{location_state}"
+  end
+
+  def created_by
+    User.find(user_id)
+  end
 end
