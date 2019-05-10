@@ -1,6 +1,5 @@
 class Api::V1::PublicEventsController < ApiController
   def index
-    events = PublicEvent.all
     render json: { events: serialized_public_events }
   end
 
@@ -17,11 +16,11 @@ class Api::V1::PublicEventsController < ApiController
         render json: { messages: @public_event.errors.full_messages }, status: :unprocessable_entity
       end
     else
-      
+
     end
   end
 
   def serialized_public_events
-    ActiveModel::Serializer::ArraySerializer.new(PublicEvent.all, each_serializer: PublicEventSerializer)
+    ActiveModel::Serializer::ArraySerializer.new(PublicEvent.near([current_user.latitude, current_user.longitude], 100).sort_by {|event| [event.distance_to("#{current_user.location}"), event.start_time] }, each_serializer: PublicEventSerializer)
   end
 end
