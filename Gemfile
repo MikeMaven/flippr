@@ -31,6 +31,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'carrierwave'
 gem 'mini_magick'
 gem "active_model_serializers"
+gem 'geocoder'
+gem 'codecov', :require => false, :group => :test
 
 
 group :development, :test do

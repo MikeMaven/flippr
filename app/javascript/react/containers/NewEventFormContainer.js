@@ -1,5 +1,6 @@
 import React from 'react';
 
+import moment from 'moment';
 import Dropzone from 'react-dropzone';
 import TextField from '../components/TextField';
 import LocationSearchField from '../components/LocationSearchField';
@@ -18,6 +19,7 @@ class NewEventFormContainer extends React.Component {
       searchIsHidden: false,
       starttime: '',
       endtime: '',
+      messages: {}
     }
     this.handleChange = this.handleChange.bind(this)
     this.sendUpLocationInfo = this.sendUpLocationInfo.bind(this)
@@ -54,8 +56,8 @@ class NewEventFormContainer extends React.Component {
     body.append("location_city", this.state.selectedLocation.city)
     body.append("location_state", this.state.selectedLocation.state)
     body.append("location_zip", this.state.selectedLocation.zip)
-    body.append("start_time", this.state.startTime)
-    body.append("end_time", this.state.endTime)
+    body.append("start_time", moment(`${this.state.starttime}`).format())
+    body.append("end_time", moment(`${this.state.endtime}`).format())
     body.append("event_photo", this.state.file[0])
 
     fetch("/api/v1/public_events.json",{
@@ -71,26 +73,33 @@ class NewEventFormContainer extends React.Component {
           error = new Error(errorMessage);
           throw(error);
         }
-        })
-        .then(response => response.json())
-        .then(body => {
-          this.setState({
-            title: '',
-            description: '',
-            file: [],
-            errors: {},
-            selectedLocation: {},
-            infoIsHidden: true,
-            searchIsHidden: false
-          })
-        })
-        .catch(error => console.error(`Error in fetch: ${error.message}`));
+      })
+      .then(response => {
+        response.json()
+      })
+      .then(body => {
+        return (window.location.href = '/');
+      })
+      .catch(error => {
+        let formError = { formError: error.message }
+        this.setState({ messages: Object.assign({}, this.state.messages, formError) })
+        console.error(`Error in fetch: ${error.message}`)
+      });
   }
 
   render(){
-    console.log(this.state)
+    let messageDiv
+    let messageItems
+
+    if (Object.keys(this.state.messages).length > 0) {
+      messageItems = Object.values(this.state.messages).map(message => {
+        return(<li key={message}>{message}</li>)
+      })
+      messageDiv = (<div className="callout alert">{messageItems}</div>)
+    }
     return(
-      <form className="react-new-event-form" onSubmit={this.handleSubmit}>
+        <form className="react-new-event-form" onSubmit={this.handleSubmit}>
+        {messageDiv}
         <TextField
           name="title"
           label="Event Name: (60 characters max)"

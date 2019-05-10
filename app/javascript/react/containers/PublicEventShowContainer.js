@@ -1,14 +1,18 @@
 import React from 'react';
 
+import moment from 'moment';
+
 class PublicEventShowContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       event: {
-        title: '',
-        description: '',
+        title: 'Loading...',
+        description: 'Loading...',
         location_name: '',
         location_address: '',
+        start_time: '',
+        end_time: '',
         event_photo: {
           show: { url: ''}
         },
@@ -50,10 +54,6 @@ class PublicEventShowContainer extends React.Component {
           <div className="event-show-photo">
             <img src={event.event_photo.show.url}/>
           </div>
-          <div className="event-show-description">
-            <strong>Description:</strong><br/>
-            <p>{event.description}</p>
-          </div>
           <div className="event-show-right">
             <div className="event-show-host">
               <p>Hosted by:</p>
@@ -65,11 +65,17 @@ class PublicEventShowContainer extends React.Component {
             <div className="event-show-info">
               <h4>{event.title}</h4>
               <h5>{event.location_name}</h5>
-              <div className="event-show-address">
-                <span>{event.location_address}</span>
-                <span>{event.location_city}, {event.location_state} {event.location_zip}</span>
-              </div>
+            <div className="event-show-address">
+              <span>{event.location_address}</span>
+              <span>{event.location_city}, {event.location_state} {event.location_zip}</span>
             </div>
+            <h6>Start Time: {moment(event.start_time).format('MMMM Do YYYY, h:mm a')}</h6>
+            <h6>End Time: {moment(event.end_time).format('MMMM Do YYYY, h:mm a')}</h6>
+          </div>
+          </div>
+          <div className="event-show-description">
+            <strong>Description:</strong><br/>
+            <p>{event.description}</p>
           </div>
         </div>
       </div>
