@@ -6,7 +6,9 @@ const PublicEventTile = props => {
     <div className="event-tile">
       <div className="event-tile-content">
         <div className="event-tile-user-info">
+          <Link to={`/users/${props.user.id}`}>
           <img src={props.user.profile_photo.thumb.url}/>
+          </Link>
           <h5 className="event-tile-user-name">{props.user.first_name} {props.user.last_name}</h5>
         </div>
         <div className="event-tile-event">

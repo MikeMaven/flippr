@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :public_events, only: [:index, :show, :create]
-      resources :users, only: [:create]
+      resources :users, only: [:show, :create]
     end
   end
 
   get "/location", to: "user_locations#index"
+  get "/dashboard/:id", to: "dashboards#show"
 end

@@ -1,11 +1,11 @@
-.event-show-page {
+.user-show-page {
   height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.event-show-event {
+.user-show-user {
   margin-top: 20px;
   padding: 20px;
   width: 85%;
@@ -16,44 +16,44 @@
   justify-content: space-between;
 }
 
-.event-show-info {
+.user-show-info {
   text-align: right;
   display: flex;
   flex-direction: column;
   font-family: 'Quicksand', sans-serif;
 }
 
-.event-show-info h4 {
+.user-show-info h4 {
   font-family: 'Staatliches', cursive;
 }
 
-.event-show-address {
+.user-show-address {
   display: flex;
   flex-direction: column;
   color: gray;
 }
 
-.event-show-host {
+.user-show-host {
   text-align: right;
   font-family: 'Quicksand', sans-serif;
 }
 
-.event-show-host-tag {
+.user-dash-header {
   font-family: 'Staatliches', cursive;
 }
 
-.event-show-host-tag img {
+.user-show-host-tag img {
   margin-top: -20px;
   border-radius: 25px;
 }
 
-.event-show-right {
+.user-show-right {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.event-show-description {
+.user-show-description {
   width: 35%;
   max-height: 380px;
   display: flex;
@@ -62,12 +62,21 @@
   overflow-y: scroll;
 }
 
-.event-show-description h1 {
+.user-show-description h1 {
   font-family: 'Quicksand', sans-serif;
 }
 
-.event-show-description p {
+.user-show-description p {
   text-align: justify;
   white-space: pre-wrap;
   font-size: 90%;
+}
+
+.user-show-photo h5 {
+  font-family: 'Staatliches', cursive;
+}
+
+.user-show-photo h6 {
+  ont-family: 'Quicksand', sans-serif;
+  color: gray;
 }
