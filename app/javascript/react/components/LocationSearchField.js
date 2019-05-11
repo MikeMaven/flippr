@@ -22,7 +22,7 @@ class LocationSearchField extends React.Component {
   }
 
   getInfo = () => {
-    fetch(`http://pinballmap.com/api/v1/locations/?by_location_name=${this.state.query}`, {
+    fetch(`https://pinballmap.com/api/v1/locations/?by_location_name=${this.state.query}`, {
       mode: "cors"
     })
       .then(response => {
