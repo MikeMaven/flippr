@@ -1,11 +1,11 @@
-.user-show-page {
+.user-dashboard-page {
   height: 75vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
-.user-show-user {
+.user-dashboard-user {
   margin-top: 20px;
   padding: 20px;
   width: 85%;
@@ -16,24 +16,34 @@
   justify-content: space-between;
 }
 
-.user-show-info {
+.user-dashboard-menu {
+  margin-top: 20px;
+  padding: 20px;
+  width: 85%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.user-dashboard-info {
   text-align: right;
   display: flex;
   flex-direction: column;
   font-family: 'Quicksand', sans-serif;
 }
 
-.user-show-info h4 {
+.user-dashboard-info h4 {
   font-family: 'Staatliches', cursive;
 }
 
-.user-show-address {
+.user-dashboard-address {
   display: flex;
   flex-direction: column;
   color: gray;
 }
 
-.user-show-host {
+.user-dashboard-host {
   text-align: right;
   font-family: 'Quicksand', sans-serif;
 }
@@ -42,41 +52,45 @@
   font-family: 'Staatliches', cursive;
 }
 
-.user-show-host-tag img {
+.user-dashboard-host-tag img {
   margin-top: -20px;
   border-radius: 25px;
 }
 
-.user-show-right {
+.user-dashboard-right {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.user-show-description {
+.user-dashboard-description {
   width: 35%;
   max-height: 380px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: scroll;
 }
 
-.user-show-description h1 {
+.user-dashboard-description h1 {
   font-family: 'Quicksand', sans-serif;
 }
 
-.user-show-description p {
+.user-dashboard-description p {
   text-align: justify;
   white-space: pre-wrap;
   font-size: 90%;
 }
 
-.user-show-photo h5 {
+.user-dashboard-photo h5 {
   font-family: 'Staatliches', cursive;
 }
 
-.user-show-photo h6 {
-  ont-family: 'Quicksand', sans-serif;
+.user-dashboard-photo h6 {
+  font-family: 'Quicksand', sans-serif;
   color: gray;
+}
+
+.bio-update-success {
+  font-family: 'Quicksand', sans-serif;
+  color: #82CE6C;
 }

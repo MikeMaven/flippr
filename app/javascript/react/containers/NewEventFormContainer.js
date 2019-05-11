@@ -98,7 +98,7 @@ class NewEventFormContainer extends React.Component {
       messageDiv = (<div className="callout alert">{messageItems}</div>)
     }
     return(
-        <form className="react-new-event-form" onSubmit={this.handleSubmit}>
+        <form className="react-new-event-form">
         {messageDiv}
         <TextField
           name="title"

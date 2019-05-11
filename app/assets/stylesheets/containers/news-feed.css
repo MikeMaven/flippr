@@ -17,3 +17,15 @@
   border-radius: 20px;
   box-shadow: 4px 4px gray;
 }
+
+.root-container h6 {
+  padding: 5px;
+  background-color: white;
+  margin-left: 20px;
+  align-self: flex-start;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.root-container h5 {
+  font-family: 'Quicksand', sans-serif;
+}

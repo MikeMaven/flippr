@@ -9,6 +9,7 @@ class NewsFeedContainer extends React.Component {
     super(props);
     this.state = {
       events: [],
+      radius: 100,
       toggleForm: true
     }
     this.toggleForm = this.toggleForm.bind(this)
@@ -64,7 +65,7 @@ componentDidMount(){
       })
       .then(response => response.json())
       .then(body => {
-        this.setState({ events: body.events })
+        this.setState({ events: body.events, radius: body.radius })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
 }
@@ -79,14 +80,21 @@ componentDidMount(){
           title={event.title}
           locationName={event.location_name}
           user={event.created_by}
+          date={event.start_time}
         />
       )
     })
+    let noEvents
+    if (events.length === 0) {
+      noEvents = (<h5>Looks like there are no events in your area yet! Why not add one?</h5>)
+    }
     return(
       <div className="root-container">
         <input className="add-event-button" type="button" value="Add A Flip Sesh" onClick={this.toggleForm}/>
         {!this.state.toggleForm && <NewEventFormContainer/>}
+        <h6>Showing all events within {this.state.radius} miles:</h6>
         {events}
+        {noEvents}
       </div>
     )
   }

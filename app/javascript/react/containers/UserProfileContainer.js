@@ -14,7 +14,8 @@ class UserProfileContainer extends React.Component {
           },
           profile: {
             url: ""
-          }
+          },
+          bio: ""
         },
       }
     }
@@ -65,7 +66,7 @@ class UserProfileContainer extends React.Component {
           </div>
           <div className="user-show-description">
             <strong>Bio:</strong><br/>
-            <p>The user bio will go here.</p>
+            <p>{user.bio}</p>
           </div>
         </div>
       </div>

@@ -8,6 +8,8 @@
 .top-bar-logo {
   font-family: 'Bungee Shade', cursive;
   font-size: 60px;
+  align-self: center;
+  margin-left: 10%;
 }
 
 .top-bar {

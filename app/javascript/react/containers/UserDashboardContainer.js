@@ -1,5 +1,7 @@
 import React from 'react';
 
+import TextField from '../components/TextField'
+
 class UserDashBoardContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -15,8 +17,136 @@ class UserDashBoardContainer extends React.Component {
           profile: {
             url: ""
           }
-        },
+        }
+      },
+      hideRadiusEdit: true,
+      hideLocationEdit: true,
+      eventRadius: "",
+      userLocation: "",
+      submissionSuccess: ""
+    }
+    this.submitRadius = this.submitRadius.bind(this)
+    this.submitLocation = this.submitLocation.bind(this)
+    this.toggleRadiusMenu = this.toggleRadiusMenu.bind(this)
+    this.toggleLocationMenu = this.toggleLocationMenu.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.submitBio = this.submitBio.bind(this)
+    this.bioChange = this.bioChange.bind(this)
+    this.successMessage = this.successMessage.bind(this)
+    this.resetSuccess = this.resetSuccess.bind(this)
+  }
+
+  successMessage(){
+    setTimeout(this.resetSuccess, 3000)
+    this.setState({ submissionSuccess: "Bio successfully updated!" })
+  }
+
+  resetSuccess(){
+    this.setState({ submissionSuccess: "" })
+  }
+
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
+  bioChange(event) {
+    let user = this.state.user
+    user.bio = event.target.value
+    setState({ user })
+  }
+
+  submitRadius(event){
+    event.preventDefault();
+
+    let body = { search_radius: { search_radius: this.state.eventRadius } }
+    fetch("/api/v1/users",{
+      credentials: 'same-origin',
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
       }
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status}(${response.statusText})` ,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+    this.toggleRadiusMenu()
+  }
+
+  submitBio(event){
+    event.preventDefault();
+
+    let body = { userbio: { bio: this.state.user.bio } }
+    fetch("/api/v1/users",{
+      credentials: 'same-origin',
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status}(${response.statusText})` ,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+    this.successMessage();
+  }
+
+  submitLocation(event){
+    event.preventDefault();
+
+    let body = { userlocation: { location: this.state.userLocation } }
+    fetch("/api/v1/users",{
+      credentials: 'same-origin',
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status}(${response.statusText})` ,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+
+    this.toggleLocationMenu()
+  }
+
+  toggleRadiusMenu(){
+    if (this.state.hideRadiusEdit) {
+      this.setState({ hideRadiusEdit: false })
+    } else {
+      this.setState({ hideRadiusEdit: true })
+    }
+  }
+
+  toggleLocationMenu(){
+    if (this.state.hideLocationEdit) {
+      this.setState({ hideLocationEdit: false })
+    } else {
+      this.setState({ hideLocationEdit: true })
     }
   }
 
@@ -39,35 +169,67 @@ class UserDashBoardContainer extends React.Component {
   }
 
   render(){
+    debugger
     let user = this.state.user
     return(
-      <div className="user-show-page">
-        <div className="user-show-user">
-          <div className="user-show-photo">
+      <div className="user-dashboard-page">
+        <div className="user-dashboard-user">
+          <div className="user-dashboard-photo">
             <img src={user.profile_photo.profile.url}/>
             <h5>{user.first_name} {user.last_name}</h5>
             <h6>@{user.username}</h6>
           </div>
-          <div className="user-show-right">
-            <div className="user-show-host">
+          <div className="user-dashboard-right">
+            <div className="user-dashboard-host">
               <div className="user-dash-header">
                 User Dashboard
               </div>
             </div>
-            <div className="user-show-info">
-              <h4>Other stuff.</h4>
-              <h5>Will go here.</h5>
-            <div className="user-show-address">
-              <span>And even more</span>
-              <span>really good stuff.</span>
+            <div className="user-dashboard-info">
+              <h4>Update Event Radius</h4>
+              <p onClick={this.toggleRadiusMenu} className="button tiny warning">Open Menu</p>
+            <div className="user-dashboard-address">
+              <span>Location not working with your browser?</span>
+              <span>Set your location manually here:</span>
             </div>
+            <h4>Update Location</h4>
+            <p onClick={this.toggleLocationMenu} className="button tiny warning">Open Menu</p>
           </div>
           </div>
-          <div className="user-show-description">
+          <div className="user-dashboard-description">
+            <p className="bio-update-success">{this.state.submissionSuccess}</p>
             <strong>Bio:</strong><br/>
-            <p>The user bio will go here.</p>
+            <form>
+            <textarea name="bio" value={this.state.user.bio} onChange={this.bioChange} rows="10"/>
+            <input onClick={this.submitBio} className="button success tiny" type="submit" value="Update Bio" />
+            </form>
           </div>
         </div>
+        { !this.state.hideRadiusEdit && (
+          <div className="user-dashboard-menu">
+            <form onSubmit={this.submitRadius}>
+            <TextField
+              name="eventRadius"
+              label="Edit Search Radius of Event Feed"
+              value={this.state.eventRadius}
+              handleChangeMethod={this.handleChange}
+            /> Miles
+            </form>
+          </div>
+        )}
+
+        { !this.state.hideLocationEdit && (
+          <div className="user-dashboard-menu">
+            <form onSubmit={this.submitLocation}>
+            <TextField
+              name="userLocation"
+              label="Enter an address or landmark:"
+              value={this.state.userLocation}
+              handleChangeMethod={this.handleChange}
+            />
+            </form>
+          </div>
+        )}
       </div>
     )
   }
