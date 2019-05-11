@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router';
 
+import moment from 'moment';
+
 const PublicEventTile = props => {
   return(
     <div className="event-tile">
@@ -21,7 +23,10 @@ const PublicEventTile = props => {
             <Link to={`/public_events/${props.id}`}>
               <h4 className="event-tile-title">{props.title}</h4>
             </Link>
-            <p className="event-tile-location">{props.locationName}</p>
+            <span className="event-tile-sub-info">
+              <p className="event-tile-location">{props.locationName}</p>
+              <p className="event-tile-date">{moment(props.date).format('MMMM Do YYYY')}</p>
+            </span>
           </div>
         </div>
       </div>

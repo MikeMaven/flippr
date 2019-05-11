@@ -1,6 +1,6 @@
 class Api::V1::PublicEventsController < ApiController
   def index
-    render json: { events: serialized_public_events }
+    render json: { events: serialized_public_events, radius: current_user.search_radius }
   end
 
   def show
@@ -21,6 +21,10 @@ class Api::V1::PublicEventsController < ApiController
   end
 
   def serialized_public_events
-    ActiveModel::Serializer::ArraySerializer.new(PublicEvent.near([current_user.latitude, current_user.longitude], 100).sort_by {|event| [event.distance_to("#{current_user.location}"), event.start_time] }, each_serializer: PublicEventSerializer)
+    if current_user.latitude != nil
+      ActiveModel::Serializer::ArraySerializer.new(PublicEvent.near([current_user.latitude, current_user.longitude], current_user.search_radius).sort_by {|event| [event.distance_to("#{current_user.location}"), event.start_time] }, each_serializer: PublicEventSerializer)
+    else
+      ActiveModel::Serializer::ArraySerializer.new(PublicEvent.near("#{current_user.location}", current_user.search_radius).sort_by {|event| [event.distance_to("#{current_user.location}"), event.start_time] }, each_serializer: PublicEventSerializer)
+    end
   end
 end

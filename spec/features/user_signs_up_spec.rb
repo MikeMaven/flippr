@@ -6,12 +6,6 @@ feature 'user registers', %Q{
   So that I can create an account
 } do
 
-  # Acceptance Criteria:
-  # * I must specify a valid email address,
-  #   password, and password confirmation
-  # * If I don't specify the required information, I am presented with
-  #   an error message
-
   scenario 'provide valid registration information' do
     visit new_user_registration_path
 
@@ -21,6 +15,7 @@ feature 'user registers', %Q{
     fill_in 'First Name:', with: 'Mike'
     fill_in 'Last Name:', with: 'Maven'
     fill_in 'Username:', with: 'MikeMaven'
+    attach_file("Add A Profile Photo:", Rails.root + "spec/support/test.jpg")
 
     click_button 'Sign Up'
 
