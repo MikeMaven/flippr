@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates :profile_photo, presence: true
   validates :search_radius, presence: true
 
+  has_many :public_events, dependent: :destroy
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :friendships

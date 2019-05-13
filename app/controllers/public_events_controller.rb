@@ -7,6 +7,9 @@ class PublicEventsController < ApplicationController
     @public_event = PublicEvent.new
   end
 
+  def edit
+  end
+
   def create
     @public_event = PublicEvent.new(public_event_params)
     @public_event.user_id = current_user.id

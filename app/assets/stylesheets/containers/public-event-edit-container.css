@@ -1,84 +1,79 @@
-.user-show-page {
+.event-edit-page {
   height: 75vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
-.user-show-user {
+.event-edit-event {
   margin-top: 20px;
   padding: 20px;
-  width: 70%;
-  min-height: 300px;
+  width: 85%;
+  min-height: 500px;
   background-color: white;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.user-show-info {
+.event-edit-info {
   text-align: right;
   display: flex;
   flex-direction: column;
   font-family: 'Quicksand', sans-serif;
 }
 
-.user-show-info h4 {
+.event-edit-info h4 {
   font-family: 'Staatliches', cursive;
 }
 
-.user-show-address {
+.event-edit-address {
   display: flex;
   flex-direction: column;
   color: gray;
 }
 
-.user-show-host {
+.event-edit-host {
   text-align: right;
   font-family: 'Quicksand', sans-serif;
 }
 
-.user-dash-header {
+.event-edit-host-tag {
   font-family: 'Staatliches', cursive;
 }
 
-.user-show-host-tag img {
+.event-edit-host-tag img {
   margin-top: -20px;
   border-radius: 25px;
 }
 
-.user-show-right {
+.event-edit-right {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.user-show-description {
+.event-edit-description {
   width: 35%;
-  max-height: 380px;
+  max-height: 480px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
-.user-show-description h1 {
+.event-edit-description h1 {
   font-family: 'Quicksand', sans-serif;
 }
 
-.user-show-description p {
-  line-height: 1.1;
-  font-family: 'Quicksand', sans-serif;
-  text-align: left;
+.event-edit-description p {
+  text-align: justify;
   white-space: pre-wrap;
   font-size: 90%;
 }
 
-.user-show-photo h5 {
-  font-family: 'Staatliches', cursive;
-}
+.event-edit-success {
+  width 100%;
+  background-color: #82CE6C;
 
-.user-show-photo h6 {
-  ont-family: 'Quicksand', sans-serif;
-  color: gray;
 }

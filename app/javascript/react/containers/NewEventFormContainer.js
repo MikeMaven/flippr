@@ -19,7 +19,8 @@ class NewEventFormContainer extends React.Component {
       searchIsHidden: false,
       starttime: '',
       endtime: '',
-      messages: {}
+      messages: {},
+      loading: true
     }
     this.handleChange = this.handleChange.bind(this)
     this.sendUpLocationInfo = this.sendUpLocationInfo.bind(this)
@@ -75,10 +76,7 @@ class NewEventFormContainer extends React.Component {
         }
       })
       .then(response => {
-        response.json()
-      })
-      .then(body => {
-        return (window.location.href = '/');
+        this.props.handleRefresh()
       })
       .catch(error => {
         let formError = { formError: error.message }

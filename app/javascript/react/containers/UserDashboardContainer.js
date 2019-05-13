@@ -52,7 +52,7 @@ class UserDashBoardContainer extends React.Component {
   bioChange(event) {
     let user = this.state.user
     user.bio = event.target.value
-    setState({ user })
+    this.setState({ user })
   }
 
   submitRadius(event){
@@ -169,7 +169,6 @@ class UserDashBoardContainer extends React.Component {
   }
 
   render(){
-    debugger
     let user = this.state.user
     return(
       <div className="user-dashboard-page">

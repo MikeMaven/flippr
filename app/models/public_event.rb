@@ -11,6 +11,8 @@ class PublicEvent < ApplicationRecord
   validates :end_time, presence: true
   validates :description, presence: true
 
+  belongs_to :user
+
   geocoded_by :the_address
   after_validation :geocode
 
@@ -20,5 +22,9 @@ class PublicEvent < ApplicationRecord
 
   def created_by
     User.find(user_id)
+  end
+
+  def is_future
+    DateTime.parse(self.end_time).future?
   end
 end
