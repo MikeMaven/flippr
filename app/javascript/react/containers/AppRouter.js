@@ -6,6 +6,7 @@ import PublicEventShowContainer from './PublicEventShowContainer'
 import LocationButton from '../components/LocationButton'
 import UserDashboardContainer from './UserDashboardContainer'
 import UserProfileContainer from './UserProfileContainer'
+import PublicEventEditContainer from './PublicEventEditContainer'
 
 export const AppRouter = props => {
   return(
@@ -16,6 +17,7 @@ export const AppRouter = props => {
         <Route path='/location' component={LocationButton}/>
         <Route path='/dashboard/:id' component={UserDashboardContainer}/>
         <Route path='/users/:id' component={UserProfileContainer} />
+        <Route path='public_events/:id/edit' component={PublicEventEditContainer}/>
       </Router>
     </div>
   )

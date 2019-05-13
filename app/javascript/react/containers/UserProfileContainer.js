@@ -49,24 +49,24 @@ class UserProfileContainer extends React.Component {
             <h5>{user.first_name} {user.last_name}</h5>
             <h6>@{user.username}</h6>
           </div>
-          <div className="user-show-right">
-            <div className="user-show-host">
-              <div className="user-dash-header">
-                {user.first_name} {user.last_name}'s Profile
-              </div>
-            </div>
-            <div className="user-show-info">
-              <h4>Other stuff.</h4>
-              <h5>Will go here.</h5>
-            <div className="user-show-address">
-              <span>And even more</span>
-              <span>really good stuff.</span>
-            </div>
-          </div>
-          </div>
           <div className="user-show-description">
             <strong>Bio:</strong><br/>
             <p>{user.bio}</p>
+          </div>
+          <div className="user-show-right">
+          <div className="user-show-host">
+          <div className="user-dash-header">
+          {user.first_name} {user.last_name}'s Profile
+          </div>
+          </div>
+          <div className="user-show-info">
+          <h4>Flippr</h4>
+          <h5>Pinball for all.</h5>
+          <div className="user-show-address">
+          <span>And even more</span>
+          <span>really good stuff.</span>
+          </div>
+          </div>
           </div>
         </div>
       </div>
