@@ -1,8 +1,9 @@
 .event-show-page {
-  height: 75vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #E9EBEE;
 }
 
 .event-show-event {
@@ -14,6 +15,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.event-show-photo {
+  display: flex;
+  flex-direction: column;
 }
 
 .event-show-info {
@@ -70,4 +76,40 @@
   text-align: justify;
   white-space: pre-wrap;
   font-size: 90%;
+}
+
+.map-marker{
+  font-size: 200%;
+  color: red;
+}
+
+.rsvp-header {
+  font-family: 'Staatliches', cursive;
+}
+
+#rsvp-button {
+  font-family: 'Staatliches', cursive;
+}
+
+.event-show-attendees {
+  display: flex;
+  flex-direction: row;
+  margin-left: 15px;
+}
+
+.attendees-overflow {
+  margin-left: -15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  font-family: 'Staatliches', cursive;
+  font-size: 70%;
+  padding: 5px;
+  background-color: #dfddddd6;
+  color: black;
+  border: 1px solid gray;
+  border-radius: 25px;
 }

@@ -29,4 +29,8 @@ class PublicEvent < ApplicationRecord
   def is_future
     DateTime.parse(self.end_time).future?
   end
+
+  def attendees
+    UserEventRsvp.where(public_event: self, attending: true)
+  end
 end

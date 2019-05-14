@@ -49,10 +49,11 @@
 
 .root-container h6 {
   padding: 5px;
-  background-color: white;
+  background-color: #eff1f3;
   margin-left: 20px;
   align-self: flex-start;
   font-family: 'Quicksand', sans-serif;
+  box-shadow: 4px 4px #d9dadc;
 }
 
 .root-container h5 {

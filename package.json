@@ -9,6 +9,7 @@
     "@rails/webpacker": "3.5",
     "babel-preset-react": "~6.24.1",
     "foundation-datepicker": "^1.5.6",
+    "google-map-react": "^1.1.4",
     "input-moment": "^0.4.0",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",

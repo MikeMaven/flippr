@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :public_events, only: [:index, :show, :create, :destroy, :update]
+      resources :public_events, only: [:index, :show, :create, :destroy, :update] do
+        resources :user_event_rsvps, only: [:index, :create]
+      end
       resources :users, only: [:show, :create]
       resources :by_locations, only: [:show]
     end

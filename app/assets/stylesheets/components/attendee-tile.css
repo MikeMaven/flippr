@@ -1,0 +1,8 @@
+.attendee-tile-photo img {
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.attendee-tile-photo {
+  margin-left: -15px;
+}
