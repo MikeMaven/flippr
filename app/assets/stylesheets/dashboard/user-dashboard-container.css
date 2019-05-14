@@ -24,6 +24,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .user-dashboard-info {
@@ -93,4 +94,15 @@
 .bio-update-success {
   font-family: 'Quicksand', sans-serif;
   color: #82CE6C;
+}
+
+@media only screen and (max-width: 600px) {
+  .user-dashboard-user {
+    margin-top: 20px;
+    padding: 20px;
+    width: 85%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+  }
 }

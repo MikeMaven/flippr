@@ -126,3 +126,11 @@
 .event-tile-sub-info p {
   line-height: 3px;
 }
+
+@media only screen and (max-width: 600px) {
+  .event-tile-photo {
+    height: auto;
+    width: auto;
+    overflow: hidden;
+  }
+}
