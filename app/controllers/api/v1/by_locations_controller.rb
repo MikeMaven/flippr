@@ -1,6 +1,6 @@
 class Api::V1::ByLocationsController < ApiController
   def show
-    render json: { events: serialized_public_events, radius: current_user.search_radius, current_user: current_user, near: " near #{params[:id]}" }
+    render json: { events: serialized_public_events, radius: current_user.search_radius, current_user: current_user, near: " of #{params[:id]}" }
   end
 
   def serialized_public_events

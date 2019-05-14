@@ -4,7 +4,12 @@ class Api::V1::PublicEventsController < ApiController
   end
 
   def show
-    render json: PublicEvent.find(params[:id])
+    if UserEventRsvp.where(user: current_user, public_event: PublicEvent.find(params[:id])).length >= 1
+    rsvp = UserEventRsvp.where(user: current_user, public_event: PublicEvent.find(params[:id]))[0]
+    render json: { event: serialized_public_event, current_user: current_user.id, user_rsvp: rsvp.attending }
+    else
+      render json: { event: serialized_public_event, current_user: current_user.id, user_rsvp: false }
+    end
   end
 
   def create
