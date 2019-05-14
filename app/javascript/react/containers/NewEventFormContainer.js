@@ -13,7 +13,6 @@ class NewEventFormContainer extends React.Component {
       title: '',
       description: '',
       file: [],
-      errors: {},
       selectedLocation: {},
       infoIsHidden: true,
       searchIsHidden: false,
@@ -26,6 +25,8 @@ class NewEventFormContainer extends React.Component {
     this.sendUpLocationInfo = this.sendUpLocationInfo.bind(this)
     this.onDrop = this.onDrop.bind(this)
     this.handlePublicSubmit = this.handlePublicSubmit.bind(this)
+    this.validateInput = this.validateInput.bind(this)
+    this.validatePhoto = this.validatePhoto.bind(this)
   }
 
   onDrop(file) {
@@ -33,7 +34,7 @@ class NewEventFormContainer extends React.Component {
     this.setState({ file: file })
   } else {
     let uploadError = { uploadError: "Please only upload one file per event."}
-    this.setState({ errors: Object.assign({}, this.state.errors, uploadError) })
+    this.setState({ messages: Object.assign({}, this.state.messages, uploadError) })
   }
 }
 
@@ -45,9 +46,64 @@ class NewEventFormContainer extends React.Component {
     this.setState({ selectedLocation: params, infoIsHidden: false, searchIsHidden: true })
   }
 
+  validatePhoto(){
+    if (this.state.file.length !== 1)
+    {
+      let newError = { nameError: 'You must upload an event photo.' }
+      this.setState({ messages: Object.assign({}, this.state.messages, newError) })
+      return false
+    } else {
+      return true
+    }
+
+  }
+
+  validateInput(selection){
+    if (selection.trim() === '') {
+      if (selection === this.state.title) {
+        let newError = { nameError: 'Your event must have a title.' }
+        this.setState({ messages: Object.assign({}, this.state.messages, newError) })
+      }
+      else if (selection === this.state.selectedLocation.street) {
+        let newError = { nameError: 'Your event must choose a location.' }
+        this.setState({ messages: Object.assign({}, this.state.messages, newError) })
+      }
+      else if (selection === this.state.starttime) {
+        let newError = { nameError: 'You must enter a start time.' }
+        this.setState({ messages: Object.assign({}, this.state.messages, newError) })
+      }
+      else if (selection === this.state.endtime) {
+        let newError = { nameError: 'You must enter an end time.' }
+        this.setState({ messages: Object.assign({}, this.state.messages, newError) })
+      }
+      else if (selection === this.state.description) {
+        let newError = { nameError: 'You must enter a description for your event.' }
+        this.setState({ messages: Object.assign({}, this.state.messages, newError) })
+      }
+      else {
+        let newError = { nameError: 'There has been an error with your form.' }
+        this.setState({ messages: Object.assign({}, this.state.messages, newError) })
+      }
+      return false
+    } else {
+      let messagestate = this.state.messages
+      delete messagestate.values
+      this.setState({ messages: {} })
+      return true
+    }
+  }
+
   handlePublicSubmit(event){
     event.preventDefault();
 
+    if (
+      this.validateInput(this.state.title) &&
+      this.validateInput(this.state.description) &&
+      this.validateInput(this.state.selectedLocation.street) &&
+      this.validateInput(this.state.starttime) &&
+      this.validateInput(this.state.endtime) &&
+      this.validatePhoto()
+    ){
     let body = new FormData()
     body.append("title", this.state.title)
     body.append("description", this.state.description)
@@ -83,6 +139,7 @@ class NewEventFormContainer extends React.Component {
         this.setState({ messages: Object.assign({}, this.state.messages, formError) })
         console.error(`Error in fetch: ${error.message}`)
       });
+    }
   }
 
   render(){
@@ -122,7 +179,7 @@ class NewEventFormContainer extends React.Component {
               </p>
             </div>
             <div className="public-event-file-uploader">
-              <p>Add and Event Photo:</p>
+              <p>Add an Event Photo:</p>
               <Dropzone onDrop={this.onDrop}>
                 <div className="photo-icon">
                   <i className="fas fa-camera-retro"></i>

@@ -8,6 +8,8 @@ class User < ApplicationRecord
   validates :search_radius, presence: true
 
   has_many :public_events, dependent: :destroy
+  has_many :user_event_comments, dependent: :destroy
+  has_many :user_event_rsvps, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

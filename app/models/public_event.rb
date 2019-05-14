@@ -12,6 +12,8 @@ class PublicEvent < ApplicationRecord
   validates :description, presence: true
 
   belongs_to :user
+  has_many :user_event_comments, dependent: :destroy
+  has_many :user_event_rsvps, dependent: :destroy
 
   geocoded_by :the_address
   after_validation :geocode

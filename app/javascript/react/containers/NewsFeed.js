@@ -11,11 +11,19 @@ class NewsFeedContainer extends React.Component {
       events: [],
       radius: 100,
       toggleForm: true,
-      current_user: {}
+      locationSearch: '',
+      current_user: {},
+      near: ''
     }
     this.toggleForm = this.toggleForm.bind(this)
     this.handleRefresh = this.handleRefresh.bind(this)
     this.getEvents = this.getEvents.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.locationSubmit = this.locationSubmit.bind(this)
+  }
+
+  handleChange(event){
+    this.setState({ locationSearch: event.target.value })
   }
 
   toggleForm(){
@@ -24,6 +32,26 @@ class NewsFeedContainer extends React.Component {
     } else {
       this.setState({ toggleForm: true })
     }
+  }
+
+  locationSubmit(e){
+    e.preventDefault();
+
+    fetch(`/api/v1/by_locations/${this.state.locationSearch}`)
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status}(${response.statusText})` ,
+          error = new Error(errorMessage);
+          throw(error);
+        }
+        })
+        .then(response => response.json())
+        .then(body => {
+          this.setState({ events: body.events, radius: body.radius, current_user: body.current_user, toggleForm: true, near: body.near })
+        })
+        .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   getEvents(){
@@ -105,9 +133,18 @@ class NewsFeedContainer extends React.Component {
     }
     return(
       <div className="root-container">
-        <input className="add-event-button" type="button" value="Add A Flip Sesh" onClick={this.toggleForm}/>
+        <div className="root-top-bar">
+          <input className="add-event-button" type="button" value="Add A Flip Sesh" onClick={this.toggleForm}/>
+          <div className="location-search">
+            <span>Seach Events by Location</span>
+            <form className="location-search-bar" onSubmit={this.locationSubmit}>
+              <input onChange={this.handleChange} value={this.state.locationSearch} type="text"/>
+              <i className="fas fa-search-location" onClick={this.locationSubmit}></i>
+            </form>
+          </div>
+        </div>
         {!this.state.toggleForm && <NewEventFormContainer handleRefresh={this.handleRefresh}/>}
-        <h6>Showing all events within {this.state.radius} miles:</h6>
+        <h6>Showing all events within {this.state.radius} miles{this.state.near}:</h6>
         {events}
         {noEvents}
       </div>

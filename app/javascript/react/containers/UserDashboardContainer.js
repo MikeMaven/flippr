@@ -188,10 +188,10 @@ class UserDashBoardContainer extends React.Component {
               <h4>Update Event Radius</h4>
               <p onClick={this.toggleRadiusMenu} className="button tiny warning">Open Menu</p>
             <div className="user-dashboard-address">
-              <span>Location not working with your browser?</span>
+              <span>Browser not compatible with geolocation?</span>
               <span>Set your location manually here:</span>
             </div>
-            <h4>Update Location</h4>
+            <h4>Set Location</h4>
             <p onClick={this.toggleLocationMenu} className="button tiny warning">Open Menu</p>
           </div>
           </div>
@@ -199,7 +199,7 @@ class UserDashBoardContainer extends React.Component {
             <p className="bio-update-success">{this.state.submissionSuccess}</p>
             <strong>Bio:</strong><br/>
             <form>
-            <textarea name="bio" value={this.state.user.bio} onChange={this.bioChange} rows="10"/>
+            <textarea name="bio" value={this.state.user.bio} onChange={this.bioChange} rows="10" cols="40"/>
             <input onClick={this.submitBio} className="button success tiny" type="submit" value="Update Bio" />
             </form>
           </div>

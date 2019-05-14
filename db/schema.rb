@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_11_150035) do
+ActiveRecord::Schema.define(version: 2019_05_14_114736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,21 @@ ActiveRecord::Schema.define(version: 2019_05_11_150035) do
     t.decimal "latitude", precision: 10, scale: 6
     t.decimal "longitude", precision: 10, scale: 6
     t.index ["user_id"], name: "index_public_events_on_user_id"
+  end
+
+  create_table "user_event_comments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "public_event_id", null: false
+    t.string "body", null: false
+    t.index ["public_event_id"], name: "index_user_event_comments_on_public_event_id"
+    t.index ["user_id"], name: "index_user_event_comments_on_user_id"
+  end
+
+  create_table "user_event_rsvps", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "public_event_id", null: false
+    t.index ["public_event_id"], name: "index_user_event_rsvps_on_public_event_id"
+    t.index ["user_id"], name: "index_user_event_rsvps_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
