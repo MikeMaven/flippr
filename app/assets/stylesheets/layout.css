@@ -25,3 +25,7 @@
 body {
   background-color: #E9EBEE;
 }
+
+textarea {
+  resize: none;
+}
