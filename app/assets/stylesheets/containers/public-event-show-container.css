@@ -80,7 +80,6 @@
 
 .map-marker{
   font-size: 200%;
-  color: red;
 }
 
 .rsvp-header {
@@ -112,4 +111,20 @@
   color: black;
   border: 1px solid gray;
   border-radius: 25px;
+}
+
+.rsvp-and-comment {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+#comment-box-button {
+  border-radius: 10px;
+  background-color: #3076A0;
+}
+
+.event-discussion-header h3 {
+  font-family: 'Staatliches', cursive;
 }

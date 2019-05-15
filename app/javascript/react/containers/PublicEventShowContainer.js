@@ -4,11 +4,15 @@ import moment from 'moment';
 import GoogleMapContainer from './GoogleMapContainer'
 import RsvpButton from '../components/RsvpButton'
 import AttendeeTile from '../components/AttendeeTile'
+import EventDiscussionTile from '../components/EventDiscussionTile'
 
 class PublicEventShowContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      commentBox: '',
+      currentUser: '',
+      comments: [],
       user_rsvp: false,
       mounted: false,
       event: {
@@ -33,6 +37,13 @@ class PublicEventShowContainer extends React.Component {
     }
     this.handleRsvp = this.handleRsvp.bind(this)
     this.getEventInfo = this.getEventInfo.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleComment = this.handleComment.bind(this)
+    this.handleRefresh = this.handleRefresh.bind(this)
+  }
+
+  handleChange(event){
+    this.setState({ commentBox: event.target.value })
   }
 
   getEventInfo(){
@@ -52,14 +63,17 @@ class PublicEventShowContainer extends React.Component {
           this.setState({
             event: body.event.public_event,
             user_rsvp: body.user_rsvp,
-            mounted: true
+            mounted: true,
+            comments: body.comments,
+            currentUser: body.current_user
           })
         })
         .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   handleRsvp(){
-    let currentEvent = this.state.event
+    event.preventDefault();
+    let currentEvent = this.state.event;
 
     fetch(`/api/v1/public_events/${currentEvent.id}/user_event_rsvps`,{
       credentials: 'same-origin',
@@ -88,6 +102,41 @@ class PublicEventShowContainer extends React.Component {
           })
         })
         .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
+  handleComment(){
+    event.preventDefault();
+    let currentEvent = this.state.event;
+
+    let body = { comment: { body: this.state.commentBox } }
+
+    fetch(`/api/v1/public_events/${currentEvent.id}/user_event_comments`,{
+      credentials: 'same-origin',
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status}(${response.statusText})` ,
+          error = new Error(errorMessage);
+          throw(error);
+        }
+        })
+        .then(response => response.json())
+        .then(body => {
+          this.setState({ comments: body.comments, commentBox: '' })
+        })
+        .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
+  handleRefresh(){
+    this.getEventInfo()
   }
 
   componentDidMount(){
@@ -120,6 +169,20 @@ class PublicEventShowContainer extends React.Component {
         </div>
       )
     }
+
+    let eventComments = this.state.comments.map((comment) => {
+      return (
+        <EventDiscussionTile
+        eventId={this.state.event.id}
+        id={comment.id}
+        key={comment.id}
+        user={comment.created_by}
+        currentUser={this.state.currentUser}
+        body={comment.body}
+        handleRefresh={this.handleRefresh}
+        />
+      )
+    })
 
     let event = this.state.event
 
@@ -156,11 +219,19 @@ class PublicEventShowContainer extends React.Component {
         </div>
         <div className="event-show-event">
           <div className="rsvp-and-comment">
-            <span className="rsvp-header">
-            Flippin' with:
-            </span>
-            <div className="event-show-attendees">
-              {attendees}{overflowDiv}
+            <div className="rsvp-container">
+              <span className="rsvp-header">
+              Flippin' with:
+              </span>
+              <div className="event-show-attendees">
+                {attendees}{overflowDiv}
+              </div>
+            </div>
+            <div className="event-comment-box">
+              <textarea onChange={this.handleChange} value={this.state.commentBox} name="commentBody" rows="10" cols="50"/>
+              <button onClick={this.handleComment} className="button small" id="comment-box-button">
+              Join the Discussion
+              </button>
             </div>
             <div className="attendee-photos">
             </div>
@@ -175,6 +246,10 @@ class PublicEventShowContainer extends React.Component {
           }
           </div>
         </div>
+        <div className="event-discussion-header">
+        <h3>DISCUSSION:</h3>
+        </div>
+        {eventComments}
       </div>
     )
   }

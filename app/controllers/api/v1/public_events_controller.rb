@@ -6,9 +6,9 @@ class Api::V1::PublicEventsController < ApiController
   def show
     if UserEventRsvp.where(user: current_user, public_event: PublicEvent.find(params[:id])).length >= 1
     rsvp = UserEventRsvp.where(user: current_user, public_event: PublicEvent.find(params[:id]))[0]
-    render json: { event: serialized_public_event, current_user: current_user.id, user_rsvp: rsvp.attending }
+    render json: { event: serialized_public_event, current_user: current_user.id, user_rsvp: rsvp.attending, comments: serialized_event_comments }
     else
-      render json: { event: serialized_public_event, current_user: current_user.id, user_rsvp: false }
+      render json: { event: serialized_public_event, current_user: current_user.id, user_rsvp: false, comments: serialized_event_comments }
     end
   end
 
@@ -44,6 +44,10 @@ class Api::V1::PublicEventsController < ApiController
 
   def serialized_public_event
     ActiveModel::SerializableResource.new(PublicEvent.find(params[:id]), serializer: PublicEventSerializer)
+  end
+
+  def serialized_event_comments
+    ActiveModel::Serializer::ArraySerializer.new(UserEventComment.where(public_event: PublicEvent.find(params[:id])), each_serializer: UserEventCommentSerializer)
   end
 
   def event_params
