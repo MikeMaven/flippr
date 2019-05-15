@@ -66,8 +66,4 @@ describe('PublicEventTile', () => {
   it('render the location name', () => {
     expect(wrapper.find('p.event-tile-location').text()).toContain('Shelter Arcade Bar')
   })
-
-  it('renders the start date and time', () => {
-    expect(wrapper.find('p.event-tile-date').text()).toContain("May 31st 2019")
-  })
 });
