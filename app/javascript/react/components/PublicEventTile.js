@@ -59,14 +59,14 @@ class PublicEventTile extends React.Component {
           </div>
           <div className="event-tile-user-info">
             <Link to={`/users/${this.props.user.id}`}>
-            <img src={this.props.user.profile_photo.thumb.url}/>
+            <img className="event-tile-user-photo" src={this.props.user.profile_photo.thumb.url}/>
             </Link>
             <h5 className="event-tile-user-name">{this.props.user.first_name} {this.props.user.last_name}</h5>
           </div>
           <div className="event-tile-event">
             <div className="event-tile-photo">
               <Link to={`/public_events/${this.props.id}`}>
-                <img src={this.props.event_photo}/>
+                <img className="event-tile-event-photo" src={this.props.event_photo}/>
               </Link>
             </div>
             <div className="event-tile-info">
