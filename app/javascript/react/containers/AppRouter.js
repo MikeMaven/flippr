@@ -7,6 +7,7 @@ import LocationButton from '../components/LocationButton'
 import UserDashboardContainer from './UserDashboardContainer'
 import UserProfileContainer from './UserProfileContainer'
 import PublicEventEditContainer from './PublicEventEditContainer'
+import UserAllEventsContainer from './UserAllEventsContainer'
 
 export const AppRouter = props => {
   return(
@@ -18,6 +19,7 @@ export const AppRouter = props => {
         <Route path='/dashboard/:id' component={UserDashboardContainer}/>
         <Route path='/users/:id' component={UserProfileContainer} />
         <Route path='public_events/:id/edit' component={PublicEventEditContainer}/>
+        <Route path="/users/:user_id/public_events" component={UserAllEventsContainer} />
       </Router>
     </div>
   )

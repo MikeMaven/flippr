@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import TextField from '../components/TextField'
 
@@ -185,14 +186,19 @@ class UserDashBoardContainer extends React.Component {
               </div>
             </div>
             <div className="user-dashboard-info">
+              <h4>View All My Events</h4>
+              <span>View events you have created or RSVP'd to.</span>
+              <Link to={`/users/${this.state.user.id}/public_events`}>
+              <span className="button tiny warning dashboard-button">My Events</span>
+              </Link>
               <h4>Update Event Radius</h4>
-              <p onClick={this.toggleRadiusMenu} className="button tiny warning">Open Menu</p>
+              <span onClick={this.toggleRadiusMenu} className="button tiny warning dashboard-button">Open Menu</span>
             <div className="user-dashboard-address">
               <span>Browser not compatible with geolocation?</span>
               <span>Set your location manually here:</span>
             </div>
             <h4>Set Location</h4>
-            <p onClick={this.toggleLocationMenu} className="button tiny warning">Open Menu</p>
+            <span onClick={this.toggleLocationMenu} className="button tiny warning dashboard-button">Open Menu</span>
           </div>
           </div>
           <div className="user-dashboard-description">

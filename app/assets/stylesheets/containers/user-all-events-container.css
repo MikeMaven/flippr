@@ -1,0 +1,28 @@
+.all-events-container{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.all-events-events {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.all-events-header {
+  font-family: 'Staatliches', cursive;
+  font-size: 200%;
+}
+
+#user-events-false {
+  background-color: #929292;
+}
+
+#user-events-true {
+  background-color: #cccccb;
+}

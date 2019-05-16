@@ -36,9 +36,10 @@ class PublicEventTile extends React.Component {
           throw(error);
         }
       })
-      .then(
+      .then(response => {
+        this.setState({ toggleOptionMenu: true });
         this.props.handleRefresh()
-      )
+      })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
