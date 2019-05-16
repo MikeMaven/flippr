@@ -96,6 +96,11 @@
   color: #82CE6C;
 }
 
+.dashboard-button {
+  align-self: flex-end;
+  width: 100px;
+}
+
 @media only screen and (max-width: 600px) {
   .user-dashboard-user {
     margin-top: 20px;
