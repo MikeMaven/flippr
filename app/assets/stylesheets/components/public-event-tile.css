@@ -133,4 +133,12 @@
     width: auto;
     overflow: hidden;
   }
+
+  .event-tile-location {
+    font-size: 80%;
+  }
+
+  .event-tile-content {
+    width: 80%;
+  }
 }

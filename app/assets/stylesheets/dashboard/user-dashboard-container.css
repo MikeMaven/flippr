@@ -106,8 +106,25 @@
     margin-top: 20px;
     padding: 20px;
     width: 85%;
+    min-height: 700px;
     background-color: white;
     display: flex;
     flex-direction: column;
+  }
+
+  .user-dashboard-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .user-dashboard-description {
+    width: 100%;
+    z-index: 0;
+  }
+
+  .user-dashboard-menu {
+    z-index: 1;
   }
 }

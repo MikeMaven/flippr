@@ -82,3 +82,32 @@
   ont-family: 'Quicksand', sans-serif;
   color: gray;
 }
+
+@media only screen and (max-width: 600px) {
+  .user-show-user {
+    margin-top: 20px;
+    padding: 20px;
+    width: 85%;
+    min-height: 500px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .user-show-page {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .user-show-description {
+    width: 100%
+  }
+
+  .user-show-info {
+    visibility: collapse;
+  }
+}
