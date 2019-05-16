@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 import moment from 'moment';
 
-class PublicEventTile extends React.Component {
+class EventDiscussionTile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -71,4 +71,4 @@ class PublicEventTile extends React.Component {
   }
 }
 
-export default PublicEventTile;
+export default EventDiscussionTile;
