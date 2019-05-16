@@ -217,7 +217,7 @@ class PublicEventShowContainer extends React.Component {
             <p>{event.description}</p>
           </div>
         </div>
-        <div className="event-show-event">
+        <div className="event-show-comment">
           <div className="rsvp-and-comment">
             <div className="rsvp-container">
               <span className="rsvp-header">

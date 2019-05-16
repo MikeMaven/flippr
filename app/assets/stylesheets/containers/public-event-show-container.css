@@ -17,6 +17,17 @@
   justify-content: space-between;
 }
 
+.event-show-comment {
+  margin-top: 20px;
+  padding: 20px;
+  width: 85%;
+  min-height: 400px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .event-show-photo {
   display: flex;
   flex-direction: column;
@@ -127,4 +138,44 @@
 
 .event-discussion-header h3 {
   font-family: 'Staatliches', cursive;
+}
+
+@media only screen and (max-width: 600px) {
+  .google-map {
+    visibility: collapse;
+  }
+
+  .rsvp-and-comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .event-show-event {
+    margin-top: 20px;
+    padding: 20px;
+    width: 85%;
+    min-height: 800px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .event-show-comment {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .event-show-description {
+    margin-top: 5px;
+    width: 100%;
+    max-height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+  }
 }
