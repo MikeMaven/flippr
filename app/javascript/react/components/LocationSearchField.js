@@ -68,7 +68,7 @@ class LocationSearchField extends React.Component {
       <div className="react-location-search">
         <form>
           <input
-            placeholder="Search Public Locations Here"
+            placeholder="Search Public Locations Ex. Shelter Arcade Bar"
             ref={input => this.search = input}
             onChange={this.handleChange}
             value={this.state.query}
