@@ -18,4 +18,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 30px;
+}
+
+.location-search-example {
+  font-family: 'Quicksand', sans-serif;
+  color: #b1b1b4;
+  font-size: 60%;
+}
+
+#form-submit-button {
+  border-radius: 15px;
+  background-color: #0075a0;
 }

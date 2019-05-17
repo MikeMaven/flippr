@@ -145,6 +145,7 @@ class NewsFeedContainer extends React.Component {
         </div>
         {!this.state.toggleForm && <NewEventFormContainer handleRefresh={this.handleRefresh}/>}
         <h6>Showing all events within {this.state.radius} miles{this.state.near}:</h6>
+        <span className="news-feed-sub-header">Sorted by distance, then date.</span>
         {events}
         {noEvents}
       </div>

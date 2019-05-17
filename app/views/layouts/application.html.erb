@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="shortcut icon" href="/favicon.ico">
   <title>Flippr - A Social Calendar for Pinheads</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -24,7 +24,7 @@
       Flippr.
     </section>
 
-    <section class="active top-bar-section">
+    <section class="active top-bar-section" id="top-bar-ul">
       <ul>
         <%- if current_user -%>
           <li><%= link_to user_path(current_user) do %>

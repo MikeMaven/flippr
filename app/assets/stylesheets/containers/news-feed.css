@@ -60,6 +60,13 @@
   font-family: 'Quicksand', sans-serif;
 }
 
+.news-feed-sub-header {
+  align-self: flex-start;
+  font-family: 'Quicksand', sans-serif;
+  color: #d1d1d3;
+  margin-left: 20px;
+}
+
 @media only screen and (max-width: 600px) {
   .root-top-bar {
     margin-top: 20px;

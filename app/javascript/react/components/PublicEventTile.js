@@ -54,7 +54,7 @@ class PublicEventTile extends React.Component {
             {!this.state.toggleOptionMenu && (
               <div className="event-option-dropdown">
               <span><Link to={`/public_events/${this.props.id}/edit`}>Edit Event</Link></span>
-              <span onClick={this.handleDelete}>Delete Event</span>
+              <span onClick={this.handleDelete} className="noselect">Delete Event</span>
               </div>
             )}
           </div>
