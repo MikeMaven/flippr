@@ -34,9 +34,6 @@ gem "active_model_serializers"
 gem 'geocoder'
 gem 'codecov', :require => false, :group => :test
 gem 'fog'
-group :development, :test do
-  gem "dotenv-rails"
-end
 
 
 group :development, :test do
