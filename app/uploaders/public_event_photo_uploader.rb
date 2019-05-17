@@ -30,6 +30,14 @@ class PublicEventPhotoUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
+  def auto_orient
+    manipulate! do |img|
+    img.tap(&:auto_orient)  #try with and without the ! here.
+    end
+  end
+
+  process :auto_orient
+
   # Create different versions of your uploaded files:
   version :thumb do
    process resize_to_fit: [50, 50]
