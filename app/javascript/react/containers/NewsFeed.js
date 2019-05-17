@@ -129,7 +129,7 @@ class NewsFeedContainer extends React.Component {
     })
     let noEvents
     if (events.length === 0) {
-      noEvents = (<h5>Looks like there are no events in your area yet! Why not add one?</h5>)
+      noEvents = (<div><h5>Looks like there are no events in your area yet! Why not add one?</h5> <div className="spinner"></div></div>)
     }
     return(
       <div className="root-container">
@@ -145,6 +145,7 @@ class NewsFeedContainer extends React.Component {
         </div>
         {!this.state.toggleForm && <NewEventFormContainer handleRefresh={this.handleRefresh}/>}
         <h6>Showing all events within {this.state.radius} miles{this.state.near}:</h6>
+        <span className="news-feed-sub-header">Sorted by distance, then date.</span>
         {events}
         {noEvents}
       </div>

@@ -19,7 +19,8 @@ class NewEventFormContainer extends React.Component {
       starttime: '',
       endtime: '',
       messages: {},
-      loading: true
+      loading: true,
+      hideSpinner: true
     }
     this.handleChange = this.handleChange.bind(this)
     this.sendUpLocationInfo = this.sendUpLocationInfo.bind(this)
@@ -94,6 +95,7 @@ class NewEventFormContainer extends React.Component {
   }
 
   handlePublicSubmit(event){
+    this.setState({ hideSpinner: false })
     event.preventDefault();
 
     if (
@@ -161,7 +163,7 @@ class NewEventFormContainer extends React.Component {
           value={this.state.title}
           handleChangeMethod={this.handleChange}
         />
-
+          {!this.state.searchIsHidden && <span className="location-search-example">Flip Sessions take place in public pinball locations so anyone in the pinball community can join.</span>}
           { !this.state.searchIsHidden && <LocationSearchField
             sendUpLocationInfo={this.sendUpLocationInfo}
           /> }
@@ -205,7 +207,10 @@ class NewEventFormContainer extends React.Component {
             <label htmlFor="description">Event Description:</label>
             <textarea onChange={this.handleChange} name="description" value={this.state.description} rows="5"/>
           </div>
-          <input onClick={this.handlePublicSubmit} className="button" type="submit" value="Let's Flip!" />
+          <div className="form-submit-div">
+            <input onClick={this.handlePublicSubmit} className="button" id="form-submit-button" type="submit" value="Let's Flip!" />
+            {!this.state.hideSpinner && <div className="spinner"></div>}
+          </div>
           </div>
         )}
       </form>
