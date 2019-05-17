@@ -129,7 +129,7 @@ class NewsFeedContainer extends React.Component {
     })
     let noEvents
     if (events.length === 0) {
-      noEvents = (<h5>Looks like there are no events in your area yet! Why not add one?</h5>)
+      noEvents = (<div><h5>Looks like there are no events in your area yet! Why not add one?</h5> <div className="spinner"></div></div>)
     }
     return(
       <div className="root-container">

@@ -207,8 +207,10 @@ class NewEventFormContainer extends React.Component {
             <label htmlFor="description">Event Description:</label>
             <textarea onChange={this.handleChange} name="description" value={this.state.description} rows="5"/>
           </div>
-          <input onClick={this.handlePublicSubmit} className="button" id="form-submit-button" type="submit" value="Let's Flip!" />
-          {!this.state.hideSpinner && <div className="spinner"></div>}
+          <div className="form-submit-div">
+            <input onClick={this.handlePublicSubmit} className="button" id="form-submit-button" type="submit" value="Let's Flip!" />
+            {!this.state.hideSpinner && <div className="spinner"></div>}
+          </div>
           </div>
         )}
       </form>
