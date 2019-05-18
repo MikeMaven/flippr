@@ -37,21 +37,23 @@ class NewsFeedContainer extends React.Component {
   locationSubmit(e){
     e.preventDefault();
 
-    fetch(`/api/v1/by_locations/${this.state.locationSearch}`)
-      .then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status}(${response.statusText})` ,
-          error = new Error(errorMessage);
-          throw(error);
-        }
-        })
-        .then(response => response.json())
-        .then(body => {
-          this.setState({ events: body.events, radius: body.radius, current_user: body.current_user, toggleForm: true, near: body.near })
-        })
-        .catch(error => console.error(`Error in fetch: ${error.message}`));
+    if (this.state.locationSearch.trim() !== '') {
+      fetch(`/api/v1/by_locations/${this.state.locationSearch}`)
+        .then(response => {
+          if (response.ok) {
+            return response;
+          } else {
+            let errorMessage = `${response.status}(${response.statusText})` ,
+            error = new Error(errorMessage);
+            throw(error);
+          }
+          })
+          .then(response => response.json())
+          .then(body => {
+            this.setState({ events: body.events, radius: body.radius, current_user: body.current_user, toggleForm: true, near: body.near })
+          })
+          .catch(error => console.error(`Error in fetch: ${error.message}`));
+      }
   }
 
   getEvents(){
