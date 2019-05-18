@@ -30,6 +30,9 @@ class LocationButton extends React.Component {
           throw(error);
         }
       })
+      .then(response => {
+        (window.location.href = "/")
+      })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
     });
   }
