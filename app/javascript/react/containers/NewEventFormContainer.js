@@ -31,10 +31,10 @@ class NewEventFormContainer extends React.Component {
   }
 
   onDrop(file) {
-  if(file.length == 1) {
+  if(file.length === 1) {
     this.setState({ file: file })
   } else {
-    let uploadError = { uploadError: "Please only upload one file per event."}
+    let uploadError = { uploadError: "Please only upload one file per event, and make sure it is a jpg, jpeg, or png."}
     this.setState({ messages: Object.assign({}, this.state.messages, uploadError) })
   }
 }
@@ -48,7 +48,7 @@ class NewEventFormContainer extends React.Component {
   }
 
   validatePhoto(){
-    if (this.state.file.length !== 1)
+    if (this.state.file.length !== 1 && (this.state.file[0]["name"].includes(".jpg") || this.state.file[0]["name"].includes(".png") || this.state.file[0]["name"].includes(".jpeg")))
     {
       let newError = { nameError: 'You must upload an event photo.' }
       this.setState({ messages: Object.assign({}, this.state.messages, newError) })
@@ -56,7 +56,6 @@ class NewEventFormContainer extends React.Component {
     } else {
       return true
     }
-
   }
 
   validateInput(selection){
