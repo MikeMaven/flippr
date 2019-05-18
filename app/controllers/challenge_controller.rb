@@ -1,5 +1,5 @@
 class ChallengeController < ActionController::Base
   def letsencrypt
-    render text: "AOYogKdLtNzROGiPcSm96g_nQmSetdFsjZRMq5xI-0I.o6XMk7drlrBnCFzdIUvR8cBiXCwKsAjE_QsTjARo3YI"
+    render text: "Ry3dj2uJlc_W-E7lUSlHsodopIjSJWi1Fgww1YSe6gQ.o6XMk7drlrBnCFzdIUvR8cBiXCwKsAjE_QsTjARo3YI"
   end
 end
