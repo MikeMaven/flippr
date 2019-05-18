@@ -25,5 +25,5 @@ Rails.application.routes.draw do
   get "/location", to: "user_locations#index"
   get "/dashboard/:id", to: "dashboards#show"
   get "/api/v1/by_locations/:location", to: "api/v1/by_locations#show"
-  get "/.well-known/acme-challenge/:content", to: "challenge#show"
+  get "/.well-known/acme-challenge/:content", to: "challenge#letsencrypt"
 end
