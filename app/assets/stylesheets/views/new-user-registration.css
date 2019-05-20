@@ -9,3 +9,9 @@
 .new-user-registration-header {
   font-family: 'Bungee Shade', cursive;
 }
+
+.form-required-warning {
+  font-family: 'Quicksand', sans-serif;
+  color: red;
+  font-size: 60%;
+}
