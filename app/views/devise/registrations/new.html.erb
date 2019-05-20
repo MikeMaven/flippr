@@ -4,7 +4,7 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
+  <div class="form-required-warning">* All fields are required.</div><br />
   <div class="field">
     <%= f.label :first_name, "First Name:" %><br />
     <%= f.text_field :first_name, autofocus: true %>
