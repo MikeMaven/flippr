@@ -138,7 +138,7 @@ class NewsFeedContainer extends React.Component {
         <div className="root-top-bar">
           <input className="add-event-button" type="button" value="Add A Flip Sesh" onClick={this.toggleForm}/>
           <div className="location-search">
-            <span>Seach Events by Location</span>
+            <span>Search Events by Location</span>
             <form className="location-search-bar" onSubmit={this.locationSubmit}>
               <input onChange={this.handleChange} value={this.state.locationSearch} type="text"/>
               <i className="fas fa-search-location" onClick={this.locationSubmit}></i>
