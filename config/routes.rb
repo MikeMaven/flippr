@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get "/splash", to: "splash#index"
   get "/location", to: "user_locations#index"
   get "/dashboard/:id", to: "dashboards#show"
   get "/api/v1/by_locations/:location", to: "api/v1/by_locations#show"

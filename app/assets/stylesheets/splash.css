@@ -1,0 +1,18 @@
+.splash-page {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #E9EBEE;
+}
+
+.splash-header {
+  font-family: 'Bungee Shade', cursive;
+  font-size: 500%
+}
+
+.splash-sub-header {
+  white-space: nowrap;
+  font-family: 'Staatliches', cursive;
+}
