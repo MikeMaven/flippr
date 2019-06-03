@@ -16,3 +16,16 @@
   white-space: nowrap;
   font-family: 'Staatliches', cursive;
 }
+
+@media only screen and (max-width: 600px) {
+
+.splash-sub-header {
+  padding: 0px 20px 0px 20px;
+  white-space: pre-wrap;
+}
+
+.demo-video {
+  max-width: 90%;
+}
+
+}
