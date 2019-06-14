@@ -34,6 +34,7 @@ gem "active_model_serializers"
 gem 'geocoder'
 gem 'codecov', :require => false, :group => :test
 gem 'fog'
+gem 'shoulda-matchers'
 
 
 group :development, :test do
