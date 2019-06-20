@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, browserHistory, Route, IndexRoute } from 'react-router';
+import { Router, browserHistory, Route } from 'react-router';
 
 import NewsFeed from './NewsFeed'
 import PublicEventShowContainer from './PublicEventShowContainer'
