@@ -1,7 +1,7 @@
 import '../../testHelper.js'
 import fetchMock from 'fetch-mock'
 
-import MainFeedContainer from '../../../../app/javascript/react/containers/MainFeedConatiner'
+import MainFeedContainer from '../../../../app/javascript/react/containers/MainFeedContainer'
 import PublicEventTile from '../../../../app/javascript/react/components/PublicEventTile'
 
 describe('MainFeedContainer', () => {
