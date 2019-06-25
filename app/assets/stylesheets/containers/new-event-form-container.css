@@ -39,6 +39,18 @@
   justify-content: center;
 }
 
+.new-event-form-div {
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  box-shadow: 4px 4px #D9DADC;
+  background-color: white;
+}
+
 @media only screen and (max-width: 600px) {
   .react-new-event-form {
     width: 80%;

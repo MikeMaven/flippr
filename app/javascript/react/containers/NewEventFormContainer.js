@@ -154,6 +154,7 @@ class NewEventFormContainer extends React.Component {
       messageDiv = (<div className="callout alert">{messageItems}</div>)
     }
     return(
+      <div className="new-event-form-div">
         <form className="react-new-event-form">
         {messageDiv}
         <TextField
@@ -213,6 +214,7 @@ class NewEventFormContainer extends React.Component {
           </div>
         )}
       </form>
+    </div>
     )
   }
 }
