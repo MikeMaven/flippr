@@ -4,7 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import PublicEventTile from '../components/PublicEventTile';
 import NewEventFormContainer from './NewEventFormContainer';
 
-class NewsFeedContainer extends React.Component {
+class MainFeedContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -136,14 +136,14 @@ class NewsFeedContainer extends React.Component {
     return(
       <div className="root-container">
         <div className="root-top-bar">
+        <div className="location-search">
+        <span>Search Events by Location</span>
+        <form className="location-search-bar" onSubmit={this.locationSubmit}>
+        <input onChange={this.handleChange} value={this.state.locationSearch} type="text"/>
+        <i className="fas fa-search-location" onClick={this.locationSubmit}></i>
+        </form>
+        </div>
           <input className="add-event-button" type="button" value="Add A Flip Sesh" onClick={this.toggleForm}/>
-          <div className="location-search">
-            <span>Search Events by Location</span>
-            <form className="location-search-bar" onSubmit={this.locationSubmit}>
-              <input onChange={this.handleChange} value={this.state.locationSearch} type="text"/>
-              <i className="fas fa-search-location" onClick={this.locationSubmit}></i>
-            </form>
-          </div>
         </div>
         {!this.state.toggleForm && <NewEventFormContainer handleRefresh={this.handleRefresh}/>}
         <h6>Showing all events within {this.state.radius} miles{this.state.near}:</h6>
@@ -155,4 +155,4 @@ class NewsFeedContainer extends React.Component {
   }
 }
 
-export default NewsFeedContainer;
+export default MainFeedContainer;

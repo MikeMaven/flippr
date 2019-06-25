@@ -1,10 +1,10 @@
 import '../../testHelper.js'
 import fetchMock from 'fetch-mock'
 
-import NewsFeed from '../../../../app/javascript/react/containers/NewsFeed'
+import MainFeedContainer from '../../../../app/javascript/react/containers/MainFeedContainer'
 import PublicEventTile from '../../../../app/javascript/react/components/PublicEventTile'
 
-describe('NewsFeed', () => {
+describe('MainFeedContainer', () => {
   let wrapper,
       events;
 
