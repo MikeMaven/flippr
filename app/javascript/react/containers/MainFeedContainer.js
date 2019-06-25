@@ -136,13 +136,13 @@ class MainFeedContainer extends React.Component {
     return(
       <div className="root-container">
         <div className="root-top-bar">
-        <div className="location-search">
-        <span>Search Events by Location</span>
-        <form className="location-search-bar" onSubmit={this.locationSubmit}>
-        <input onChange={this.handleChange} value={this.state.locationSearch} type="text"/>
-        <i className="fas fa-search-location" onClick={this.locationSubmit}></i>
-        </form>
-        </div>
+          <div className="location-search">
+            <span>Search Events by Location</span>
+            <form className="location-search-bar" onSubmit={this.locationSubmit}>
+              <input onChange={this.handleChange} value={this.state.locationSearch} type="text"/>
+              <i className="fas fa-search-location" onClick={this.locationSubmit}></i>
+            </form>
+          </div>
           <input className="add-event-button" type="button" value="Add A Flip Sesh" onClick={this.toggleForm}/>
         </div>
         {!this.state.toggleForm && <NewEventFormContainer handleRefresh={this.handleRefresh}/>}
