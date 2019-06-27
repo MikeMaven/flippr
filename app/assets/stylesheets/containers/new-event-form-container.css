@@ -27,6 +27,10 @@
   font-size: 60%;
 }
 
+.location-search-header{
+  font-family: 'Quicksand', sans-serif;
+}
+
 #form-submit-button {
   border-radius: 15px;
   background-color: #0075a0;
@@ -46,7 +50,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 60%;
+  width: 70%;
   box-shadow: 4px 4px #D9DADC;
   background-color: white;
 }

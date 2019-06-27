@@ -163,7 +163,8 @@ class NewEventFormContainer extends React.Component {
           value={this.state.title}
           handleChangeMethod={this.handleChange}
         />
-          {!this.state.searchIsHidden && <span className="location-search-example">Flip Sessions take place in public pinball locations so anyone in the pinball community can join.</span>}
+          {!this.state.searchIsHidden && <div className="location-search-header">Enter the name of a pinball location you  plan to play at soon.</div>}
+          {!this.state.searchIsHidden && <div className="location-search-example">Flip Sessions take place in public pinball locations so anyone in the pinball community can join.</div>}
           { !this.state.searchIsHidden && <LocationSearchField
             sendUpLocationInfo={this.sendUpLocationInfo}
           /> }
